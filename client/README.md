@@ -78,3 +78,8 @@ npm run dev
 
 -The app is built ensuring good performance across all screen sizes, from small mobile devices to desktop screens.
 
+
+
+## 🙌 Thank You for Visiting!
+
+Thank you for checking out this project! If you found it helpful, feel free to give it a star on GitHub.
