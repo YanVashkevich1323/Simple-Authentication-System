@@ -1,0 +1,45 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.home-container h1 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  background-color: #6a1b9a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #4a148c;
+}
+
+
+@media (max-width: 600px) {
+  .home-container h1 {
+    font-size: 24px;
+  }  
+
+  .logout-button {
+    padding: 6px 14px;
+
+  }
+}
+
+@media (max-width: 400px) {
+  .home-container h1 {
+    font-size: 16px;
+  }   
+}
