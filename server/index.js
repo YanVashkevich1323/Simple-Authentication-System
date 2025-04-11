@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
+//Instead of link you can create .env file and create variable in it for more security. It's pet project , so , I left it that way.
 mongoose.connect("mongodb://127.0.0.1:27017/accounts");
 
 
@@ -25,7 +25,8 @@ app.post('/login', async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.json({ message: "The password is incorrect" });
 
-    const token = jwt.sign({ email }, "secret_key", { expiresIn: "30m" });
+    const token = jwt.sign({ email }, "JWT_SECRET", { expiresIn: "30m" });
+    //Instead of "JWT_SECRET" you can create .env file and create variable in it for more security. It's pet project , so , I left it that way.
 
     res.json({ message: "Success", token });
 
@@ -52,7 +53,8 @@ const verifyToken = (req, res, next) => {
   if (!authHeader) return res.sendStatus(401);
 
   const token = authHeader.split(" ")[1];
-  jwt.verify(token, JWT_SECRET, (err, user) => {
+  jwt.verify(token, "JWT_SECRET", (err, user) => {
+    //Instead of "JWT_SECRET" you can create .env file and create variable in it for more security. It's pet project , so , I left it that way.
     if (err) return res.sendStatus(403);
     req.user = user;
     next();
@@ -60,12 +62,12 @@ const verifyToken = (req, res, next) => {
   
 };
 
-app.get("/welcome", verifyToken, (req, res) => {
+app.get("/home", verifyToken, (req, res) => {
   res.json({ message: `Hello, ${req.user.email}` });
 });
 
 
-
+//Instead of port number (3001) you can create .env file and create variable in it for more security. It's pet project , so , I left it that way.
 app.listen(3001, () => {
   console.log("Server running on port 3001");
 });
